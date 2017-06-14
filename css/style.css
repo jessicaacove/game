@@ -1,0 +1,29 @@
+h1 {
+  text-align: center;
+}
+
+.gamearea {
+  height: 90vh;
+  width: 90vh;
+  margin: 0 auto;
+}
+  .gamegrid {
+    background-color: lightgray;
+    height: 95%;
+  }
+    .gridbox {
+      width: 20%;
+      height: 20%;
+      border: 1px solid black;
+      box-sizing: border-box;
+      float: left;
+    }
+
+  .scorebar {
+    background-color: darkgray;
+    height: 5%;
+  }
+    .scorebox {
+      background-color: white;
+      width: 20px;
+    }
