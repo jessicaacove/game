@@ -3,7 +3,11 @@ var myGame = new Game();
 
 $(document).ready(function () {
 
+$(".startbutton").click(function () {
+  $(".overlay").addClass("hidden");
+  $(".startbutton").addClass("hidden");
   myGame.startGame();
+});
 
   setInterval(function () {
     myGame.moveUpDude();
