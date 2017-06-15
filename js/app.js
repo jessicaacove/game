@@ -1,24 +1,25 @@
 
-var myGame = new Game();
-
 $(document).ready(function () {
 
-$(".startbutton").click(function () {
-  $(".overlay").addClass("hidden");
-  $(".startbutton").addClass("hidden");
-  myGame.startGame();
-});
+  var myGame = new Game();
 
-  setInterval(function () {
-    myGame.moveUpDude();
-    myGame.generateRows();
-  }, 1000);
+  $(".startbutton").click(function () {
+    myGame.startGame();
+
+    var interval = setInterval(function () {
+      myGame.moveUpDude();
+      myGame.generateRows();
+      if( myGame.score < 0 || myGame.score >= 15) {
+        clearInterval(interval);
+      }
+      }, 500);
+  });
 
 
+  $(".restartbutton").click(function () {
+    myGame.restart();
+  });
 
-});
-
-$(document).ready(function () {
 
   $(document).keydown(function (theEvent) {
     if (theEvent.which === 39 ||

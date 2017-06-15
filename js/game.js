@@ -1,7 +1,8 @@
 
 function Game() {
   this.grid = [
-    [0,0,0,0,1,   0,0,0,0],
+    [0,0,0,0,0,   0,0,0,0],
+    [0,0,0,0,0,   0,0,0,0],
     [0,0,0,0,0,   0,0,0,0],
     [0,0,0,0,0,   0,0,0,0],
     [0,0,0,0,0,   0,0,0,0],
@@ -12,10 +13,13 @@ function Game() {
     [0,0,0,0,0,   0,0,0,0],
     [0,0,0,0,"d", 0,0,0,0]
   ];
+  this.score = 0;
 }
 
 Game.prototype.startGame = function () {
   console.log("Starting the game...");
+  $(".startoverlay").addClass("hidden");
+  $(".startbutton").addClass("hidden");
   this.render();
 };
 
@@ -29,50 +33,38 @@ Game.prototype.render = function(){
     for(var j=0; j<this.grid[0].length; j++) {
       if(this.grid[i][j] === "d") {
       //Now render rows
-
-
-        for(var row = i; row > i-1; row-- ){
+        for(var row = i; row > i-9; row-- ){
           htmlRow++;
           htmlCol = -1;
           for(var col=0; col<this.grid[row].length; col++) {
             htmlCol++;
-
             //Now what do we do with that index?
             if (this.grid[row][col] == "d"){
               $(".row" + htmlRow + "col" + htmlCol).html("<i>👩🏼‍💻</i>");
             }
+            else if (this.grid[row][col] == 6){
+              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-no_entry_sign'></i>");
+            }
             else if (this.grid[row][col] == 5){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-pizza'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-arrows_clockwise'></i>");
             }
             else if (this.grid[row][col] == 4){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-electric_plug'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-interrobang'></i>");
             }
             else if (this.grid[row][col] == 3){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-coffee'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-electric_plug'></i>");
             }
             else if (this.grid[row][col] == 2){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-beer'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-coffee'></i>");
             }
             else if (this.grid[row][col] == 1){
               $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-green_apple'></i>");
             }
-            else if (this.grid[row][col] == 6){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-sunny'></i>");
-            }
-            else if (this.grid[row][col] == 7){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-necktie'></i>");
-            }
-            else if (this.grid[row][col] == 8){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-bust_in_silhouette'></i>");
-            }
-            else if (this.grid[row][col] == 9){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-watch'></i>");
-            }
-            else if (this.grid[row][col] == 10){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-sleeping'></i>");
-            }
             else if (this.grid[row][col] === 0) {
               $(".row" + htmlRow + "col" + htmlCol).html("");
+            }
+            else if (this.grid[row][col] === 7) {
+              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-pizza'></i>");
             }
           }
         }
@@ -82,8 +74,6 @@ Game.prototype.render = function(){
 
 };
 
-var score = 0;
-
 Game.prototype.moveUpDude = function () {
   for(var i=0; i<this.grid.length; i++) {
     for(var j=0; j<this.grid[0].length; j++) {
@@ -92,37 +82,35 @@ Game.prototype.moveUpDude = function () {
           this.grid[i][j] = 0;
           this.grid[i-1][j] = "d";
         }
-        else if(this.grid[i-1][j] >= 1 && this.grid[i-1][j] <= 5) {
+        else if(this.grid[i-1][j] >= 1 && this.grid[i-1][j] <= 3) {
           this.grid[i][j] = 0;
           this.grid[i-1][j] = "d";
-          score ++;
+          this.score ++;
         }
-        else if(this.grid[i-1][j] >= 6 && this.grid[i-1][j] <= 10) {
+        else if(this.grid[i-1][j] >= 4 && this.grid[i-1][j] <= 6) {
           this.grid[i][j] = 0;
           this.grid[i-1][j] = "d";
-          score -= 4;
+          this.score -= 4;
+        }
+        else if(this.grid[i-1][j] == 7) {
+          this.grid[i][j] = 0;
+          this.grid[i-1][j] = "d";
+          this.score ++;
         }
       }
     }
   }
   this.render();
-  $(".scorebox").html(score);
+  if(this.score >= 0) {
+  $(".scorebox").html(this.score);
+    if(this.score >= 15) {
+      this.win();
+    }
+  }
+  else {
+    this.lose();
+  }
 };
-
-// Game.prototype.scrollRows = function () {
-//   for(var i=0; i<this.grid.length; i++) {
-//     for(var j=0; i<this.grid[0].length; j++) {
-//       if(this.grid[i][j] == "d") {
-//
-//         this.grid[i + 1][j] = "d";
-//         //If this is a rock u lose
-//         this.grid[i][j] = 0;
-//       }
-//     }
-//   }
-//
-//
-// };
 
 
 
@@ -161,12 +149,76 @@ Game.prototype.moveDudeLeft = function () {
   }
   this.render();
 };
-
+var x = 0;
 Game.prototype.generateRows = function () {
-  var newrow = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  var itemType = Math.floor(Math.random() * 5) + 1;
-  var rockType = Math.floor(Math.random() * 5) + 6;
-  newrow[Math.floor(Math.random() * 9)] = itemType;
-  newrow[Math.floor(Math.random() * 9)] = rockType;
-  this.grid.unshift(newrow);
+
+  if( this.score == 2 && x === 0) {
+    x++;
+    console.log("Why am I two forever????????????????????????????????????");
+    console.log(this.score);
+
+    var pizzaarray = [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 7, 0, 7, 0, 7, 0, 7, 0],
+      [7, 0, 7, 0, 7, 0, 7, 0, 7],
+      [0, 7, 0, 7, 0, 7, 0, 7, 0],
+      [7, 0, 7, 0, 7, 0, 7, 0, 7],
+      [0, 7, 0, 7, 0, 7, 0, 7, 0],
+      [7, 0, 7, 0, 7, 0, 7, 0, 7],
+      [0, 7, 0, 7, 0, 7, 0, 7, 0],
+      [7, 0, 7, 0, 7, 0, 7, 0, 7],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ];
+    for (var i=0; i<pizzaarray.length; i++) {
+      this.grid.unshift(pizzaarray[i]);
+    }
+  }
+  else {
+    var newrow = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var itemType = Math.floor(Math.random() * 3) + 1;
+    var rockType = Math.floor(Math.random() * 3) + 4;
+    newrow[Math.floor(Math.random() * 9)] = itemType;
+    newrow[Math.floor(Math.random() * 9)] = rockType;
+    this.grid.unshift(newrow);
+  }
+};
+
+Game.prototype.lose = function () {
+  $(".winorloseoverlay").removeClass("hidden");
+  $(".winorloseoverlay .resulttext").html("Lose");
+  $(".restartbutton").removeClass("hidden");
+};
+
+Game.prototype.win = function () {
+  $(".winorloseoverlay").removeClass("hidden");
+  $(".winorloseoverlay .resulttext").html("Win");
+  $(".restartbutton").removeClass("hidden");
+};
+
+Game.prototype.restart = function () {
+    $(".winorloseoverlay").addClass("hidden");
+    $(".restartbutton").addClass("hidden");
+    $(".startoverlay").removeClass("hidden");
+    $(".startbutton").removeClass("hidden");
+    myGame = new Game();
+    console.log(myGame);
+    console.log(this.score);
+    $(".scorebox").html(this.score);
+    // htmlRow = -1;
+    // htmlCol = -1;
+    // $(".gridbox").empty();
 };

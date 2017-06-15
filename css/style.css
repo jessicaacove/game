@@ -1,5 +1,5 @@
 
-.overlay {
+.startoverlay {
   position: absolute;
   width: 90vh;
   height: 100%;
@@ -24,6 +24,13 @@ button {
 
 }
 
+.winorloseoverlay {
+  position: absolute;
+  width: 90vh;
+  height: 100%;
+  background-color: gray;
+}
+
 .hidden {
   visibility: hidden;
 }
@@ -42,8 +49,8 @@ h1 {
     height: 95%;
   }
     .gridbox {
-      width: 20%;
-      height: 20%;
+      width: 11.1%;
+      height: 11.1%;
       border: 1px solid black;
       box-sizing: border-box;
       float: left;
