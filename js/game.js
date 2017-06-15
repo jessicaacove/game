@@ -26,6 +26,8 @@ Game.prototype.startGame = function () {
 Game.prototype.render = function(){
   $(".gridbox").empty();
 
+
+
   var htmlRow = -1;
   var htmlCol = -1;
   // find dude
@@ -221,4 +223,18 @@ Game.prototype.restart = function () {
     // htmlRow = -1;
     // htmlCol = -1;
     // $(".gridbox").empty();
+    this.grid = [
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,0,   0,0,0,0],
+      [0,0,0,0,"d", 0,0,0,0]
+    ];
+    this.score = 0;
 };
