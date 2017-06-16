@@ -2,25 +2,10 @@
 body {
   background-image: url("../images/jessicas-background.jpg");
   background-size: cover;
-}
-
-button {
-  padding: 10px;
-  border-radius: 3px;
-  background: #581C7B;
-  transition: box-shadow .2s ease-in-out;
-  font-family: 'VT323', monospace;
-  font-size: 60px;
-  color: white;
-  margin-left: 20px;
-}
-
-button:hover {
-  box-shadow: 0 0 15px #581C7B;
-}
-
-.startbutton {
-  margin-left: 140px;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 
@@ -28,21 +13,18 @@ button:hover {
   visibility: hidden;
 }
 
-.startoverlay {
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  position: absolute;
+.gamescreen {
+  background-color: white;
+  top: -385px;
 }
+
+
   h2 {
     font-family: 'VT323', monospace;
-    font-size: 150px;
-    margin-top: 30px;
+    font-size: 90px;
+    margin-top: -10px;
     text-align: center;
-  }
-  .rules {
-    margin-left: 5px;
-    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 0px;
   }
 
   button {
@@ -52,7 +34,7 @@ button:hover {
     transition: box-shadow .2s ease-in-out;
     cursor: pointer;
     font-family: 'VT323', monospace;
-    font-size: 60px;
+    font-size: 50px;
     color: white;
     margin-left: 20px;
   }
@@ -62,16 +44,22 @@ button:hover {
   }
 
   .startbutton {
-    margin-left: 140px;
+    margin-top: 10px;
+    margin-left: 130px;
+  }
+
+  .directionsbutton {
+    margin-left: 70px;
+    margin-top: 5px;
   }
 
 
 
   .gamescreen {
-    height: 668px;
-    width: 668px;
-    margin-left: 875px;
-    margin-top:186px;
+    height: 360px;
+    width: 360px;
+    margin-left: 475px;
+    margin-top:480px;
     border-radius: 5px;
     position: absolute;
   }
@@ -80,7 +68,7 @@ button:hover {
       width: 100%;
       height: 100%;
       position: absolute;
-      margin-top: -656px;
+      margin-top: -356px;
     }
 
     .gridbox {
@@ -112,17 +100,19 @@ button:hover {
       position: absolute;
       background-color: white;
     }
-      h2 {
-        font-family: 'VT323', monospace;
-        font-size: 150px;
-        margin-top: 30px;
-        text-align: center;
-      }
 
 
+    .directionsoverlay {
+      /*margin-top: -500px;*/
+      height: 100%;
+      width: 100%;
+      margin-top: -60px;
+    }
     .directions {
       font-family: 'VT323', monospace;
       font-size: 60px;
+      margin-bottom: 10px;
+      /*margin-top: 110px;*/
     }
       .directionimage {
         width: 15%;
@@ -134,8 +124,9 @@ button:hover {
         margin-top: 40px;
       }
       .returntostart {
-        margin-top: 35px;
-        margin-left: 140px;
+        margin-top: 20px;
+        margin-left: 0px;
+        width: 350px;
       }
 
 
@@ -144,16 +135,16 @@ button:hover {
       width: 100%;
       border-radius: 5px;
       postion: absolute;
-      margin-top: -642px;
+      margin-top: -360px;
     }
       .resulttext {
         font-family: 'VT323', monospace;
-        font-size: 200px;
-        text-align: center;
+        font-size: 80px;
+        margin-left: 60px;
       }
       .restartbutton {
         margin-top: 100px;
-        margin-left: 200px;
+        margin-left: 70px;
       }
 
 
@@ -161,8 +152,8 @@ button:hover {
     .scorebox {
       font-family: 'VT323', monospace;
       position: absolute;
-      margin-left: 1370px;
-      margin-top: 1150px;
-      font-size: 100px;
+      left: 728px;
+      top: 604px;
+      font-size: 80px;
       width: 20px;
     }
