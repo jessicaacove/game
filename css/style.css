@@ -1,66 +1,168 @@
 
-.startoverlay {
-  position: absolute;
-  width: 90vh;
-  height: 100%;
-  background-color:darkblue;
-}
-
-h2 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  color: white;
-}
-
-.rules {
-  color: white;
-  margin-left: 5px;
+body {
+  background-image: url("../images/jessicas-background.jpg");
+  background-size: cover;
 }
 
 button {
-  padding: 15px 32px;
-  text-align: center;
-  font-size: 16px;
-
+  padding: 10px;
+  border-radius: 3px;
+  background: #581C7B;
+  transition: box-shadow .2s ease-in-out;
+  font-family: 'VT323', monospace;
+  font-size: 60px;
+  color: white;
+  margin-left: 20px;
 }
 
-.winorloseoverlay {
-  position: absolute;
-  width: 90vh;
-  height: 100%;
-  background-color: gray;
+button:hover {
+  box-shadow: 0 0 15px #581C7B;
 }
+
+.startbutton {
+  margin-left: 140px;
+}
+
 
 .hidden {
   visibility: hidden;
 }
 
-h1 {
-  text-align: center;
+.startoverlay {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  position: absolute;
 }
-
-.gamearea {
-  height: 90vh;
-  width: 90vh;
-  margin: 0 auto;
-}
-  .gamegrid {
-    background-color: lightgray;
-    height: 95%;
+  h2 {
+    font-family: 'VT323', monospace;
+    font-size: 150px;
+    margin-top: 30px;
+    text-align: center;
   }
+  .rules {
+    margin-left: 5px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  button {
+    padding: 10px;
+    border-radius: 3px;
+    background: #581C7B;
+    transition: box-shadow .2s ease-in-out;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 60px;
+    color: white;
+    margin-left: 20px;
+  }
+
+  button:hover {
+    box-shadow: 0 0 15px #581C7B;
+  }
+
+  .startbutton {
+    margin-left: 140px;
+  }
+
+
+
+  .gamescreen {
+    height: 668px;
+    width: 668px;
+    margin-left: 875px;
+    margin-top:186px;
+    border-radius: 5px;
+    position: absolute;
+  }
+
+    .gamegrid {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      margin-top: -656px;
+    }
+
     .gridbox {
       width: 11.1%;
       height: 11.1%;
-      border: 1px solid black;
+      /*border: 1px solid black;*/
       box-sizing: border-box;
       float: left;
     }
 
-  .scorebar {
-    background-color: darkgray;
-    height: 5%;
-  }
-    .scorebox {
+      .dude {
+        width: 100%;
+      }
+      .rock {
+        width: 100%;
+      }
+      .item {
+        width: 100%;
+      }
+      .pizza {
+        width: 100%;
+      }
+
+
+    .startoverlay {
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      position: absolute;
       background-color: white;
+    }
+      h2 {
+        font-family: 'VT323', monospace;
+        font-size: 150px;
+        margin-top: 30px;
+        text-align: center;
+      }
+
+
+    .directions {
+      font-family: 'VT323', monospace;
+      font-size: 60px;
+    }
+      .directionimage {
+        width: 15%;
+      }
+      .directionas {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 40px;
+        margin-right: 60px;
+        margin-top: 40px;
+      }
+      .returntostart {
+        margin-top: 35px;
+        margin-left: 140px;
+      }
+
+
+    .winorloseoverlay {
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      postion: absolute;
+      margin-top: -642px;
+    }
+      .resulttext {
+        font-family: 'VT323', monospace;
+        font-size: 200px;
+        text-align: center;
+      }
+      .restartbutton {
+        margin-top: 100px;
+        margin-left: 200px;
+      }
+
+
+
+    .scorebox {
+      font-family: 'VT323', monospace;
+      position: absolute;
+      margin-left: 1370px;
+      margin-top: 1150px;
+      font-size: 100px;
       width: 20px;
     }

@@ -20,6 +20,8 @@ Game.prototype.startGame = function () {
   console.log("Starting the game...");
   $(".startoverlay").addClass("hidden");
   $(".startbutton").addClass("hidden");
+  $(".directionsbutton").addClass("hidden");
+  $(".gamegrid").removeClass("hidden");
   this.render();
 };
 
@@ -42,31 +44,31 @@ Game.prototype.render = function(){
             htmlCol++;
             //Now what do we do with that index?
             if (this.grid[row][col] == "d"){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i>👩🏼‍💻</i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='dude' src='./images/computer_girl.jpg'/>");
             }
             else if (this.grid[row][col] == 6){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-no_entry_sign'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='rock' src='./images/no-entry-sign.png'>");
             }
             else if (this.grid[row][col] == 5){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-arrows_clockwise'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='rock' src='./images/interrobang.png'>");
             }
             else if (this.grid[row][col] == 4){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-interrobang'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='rock' src='./images/arrows_clockwise.png'>");
             }
             else if (this.grid[row][col] == 3){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-electric_plug'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='item' src='./images/electric_plug.png'>");
             }
             else if (this.grid[row][col] == 2){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-coffee'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='item' src='./images/Green_Apple_Emoji.png'>");
             }
             else if (this.grid[row][col] == 1){
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-green_apple'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='item' src='./images/hot-beverage.png'>");
             }
             else if (this.grid[row][col] === 0) {
               $(".row" + htmlRow + "col" + htmlCol).html("");
             }
             else if (this.grid[row][col] === 7) {
-              $(".row" + htmlRow + "col" + htmlCol).html("<i class='em em-pizza'></i>");
+              $(".row" + htmlRow + "col" + htmlCol).html("<img class='pizza' src='./images/slice-of-pizza.png'>");
             }
           }
         }
@@ -110,6 +112,7 @@ Game.prototype.moveUpDude = function () {
     }
   }
   else {
+    $(".scorebox").html(0);
     this.lose();
   }
 };
@@ -200,14 +203,16 @@ Game.prototype.generateRows = function () {
 };
 
 Game.prototype.lose = function () {
+  $(".gamegrid").addClass("hidden");
   $(".winorloseoverlay").removeClass("hidden");
-  $(".winorloseoverlay .resulttext").html("Lose");
+  $(".winorloseoverlay .resulttext").html("You Lose");
   $(".restartbutton").removeClass("hidden");
 };
 
 Game.prototype.win = function () {
+  $(".gamegrid").addClass("hidden");
   $(".winorloseoverlay").removeClass("hidden");
-  $(".winorloseoverlay .resulttext").html("Win");
+  $(".winorloseoverlay .resulttext").html("You Win");
   $(".restartbutton").removeClass("hidden");
 };
 
@@ -216,10 +221,9 @@ Game.prototype.restart = function () {
     $(".restartbutton").addClass("hidden");
     $(".startoverlay").removeClass("hidden");
     $(".startbutton").removeClass("hidden");
+    $(".directionsbutton").removeClass("hidden");
     myGame = new Game();
-    console.log(myGame);
-    console.log(this.score);
-    $(".scorebox").html(this.score);
+    $(".scorebox").html(0);
     // htmlRow = -1;
     // htmlCol = -1;
     // $(".gridbox").empty();

@@ -4,43 +4,59 @@
     <meta charset="utf-8">
     <title>Game</title>
 
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|VT323" rel="stylesheet">
     <link href="css/style.css" type="text/css" rel="stylesheet">
 
   </head>
   <body>
 
-    <h1> Ironhack: The Game </h1>
 
-    <section class="gamearea">
+      <section class="gamescreen">
+<!-- remove hidden -->
+        <div class="startoverlay">
+          <h2> Power Through </h2>
 
-      <div class="startoverlay">
-        <h2>Welcome to Ironhack!</h2>
-        <a class="rules">
-          Your goal is to utilize as much
-          <br>free coffee,
-          <br>snacks,
-          <br>and electricity
-          <br>as possible
-          <br>to evade
-          <br>frustration,
-          <br>business casual attire,
-          <br>and the rapid passing of time
-          <br>and become
-          <br>the best web developer ever.
-          <br>
-        </a>
-        <button class="startbutton">
-          Start
-        </button>
-      </div>
+          <button class="startbutton">
+            Start
+          </button>
+          <button class="directionsbutton">
+            Directions
+          </button>
+        </div>
 
-      <div class="winorloseoverlay hidden">
-      <a class="resulttext"> Result </a>
-      <button class="restartbutton hidden"> Play Again </button>
-      </div>
+        <div class="directionsoverlay hidden">
+          <h3 class="directions">
+            Directions
+          </h3>
+            <a class="directionas">Get: </a>
 
-      <div class="gamegrid">
+            <img class="directionimage" src='./images/Green_Apple_Emoji.png'>
+            <img class="directionimage" src='./images/hot-beverage.png'>
+            <img class="directionimage" src='./images/electric_plug.png'>
+            <br>
+            <a class="directionas">Avoid: </a>
+
+            <img class="directionimage" src='./images/no-entry-sign.png'>
+            <img class="directionimage" src='./images/interrobang.png'>
+            <img class="directionimage" src='./images/arrows_clockwise.png'>
+            <br>
+            <a class="directionas">Controls: </a>
+
+            <img class="directionimage" src='./images/left_arrow.png'>
+            <img class="directionimage" src='./images/right_arrow.png'>
+            <br>
+            <button class="returntostart">
+              Return to Start
+            </button>
+        </div>
+
+
+        <div class="winorloseoverlay hidden">
+          <a class="resulttext"> Result </a>
+          <button class="restartbutton"> Play Again </button>
+        </div>
+
+        <div class="gamegrid hidden">
 
         <div class="gridbox row8 row8col0">
         </div>
@@ -207,13 +223,11 @@
 
       </div>
 
-      <div class="scorebar">
-        <div class="scorebox">
-          0
-        </div>
-      </div>
-
     </section>
+
+      <div class="scorebox">
+        0
+      </div>
 
     <script
       src="http://code.jquery.com/jquery-3.2.1.min.js"

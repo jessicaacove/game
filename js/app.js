@@ -3,6 +3,16 @@ $(document).ready(function () {
 
   var myGame = new Game();
 
+  $(".directionsbutton").click(function () {
+    $(".startoverlay").addClass("hidden");
+    $(".directionsoverlay").removeClass("hidden");
+  });
+
+  $(".returntostart").click(function () {
+    $(".startoverlay").removeClass("hidden");
+    $(".directionsoverlay").addClass("hidden");
+  });
+
   $(".startbutton").click(function () {
     myGame.startGame();
 
