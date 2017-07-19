@@ -4,7 +4,7 @@ This was my first project as part of the Ironhack Web Development Bootcamp.
 With only two weeks of programming experience, I had five days to create a
 game using Javascript, HTML, and CSS. 
 
-Power Through, a.k.a. Ironhack: The Game is a falling objects game "loosely"
+Power Through, a.k.a. Ironhack: The Game is a falling objects game, "loosely"
 based on my experiences at Ironhack. 
 
 The goal: utilize as much free coffee, snacks, and electricity as possible to avoid 
